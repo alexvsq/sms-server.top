@@ -1,0 +1,46 @@
+---
+import Logo from "../../public/logo.astro";
+import Card from "./Card.astro";
+---
+
+<header id="progressbar" class="fixed  w-full ">
+    <div  class="flex text-grayTexts justify-between items-center mx-auto w-[1200px] font-medium p-2">
+        
+        <span class="w-28">
+            <Logo />
+        </span>
+        
+        <nav>
+            <ul class="flex gap-1">
+                <li class="py-1 px-3"><a href="">Descubre Más</a> </li>
+                <li class="py-1 px-3"> <a href="">Crear Campaña</a></li>
+                <li class="py-1 px-3"><a href="">Beneficios</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <ul class="flex ">
+                <li class="py-1 px-8 text-blue1"><a href="">Inicio</a></li>
+                <li class="py-1 px-8 bg-blue1 text-white rounded-full"><a href=""> Inicio</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="h-[60px]">   
+</div>
+
+<style>
+    @keyframes scale-up {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+#progressbar {
+  animation: linear forwards scale-up;
+  animation-timeline: scroll();
+}
+</style>

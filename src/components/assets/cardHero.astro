@@ -1,0 +1,27 @@
+---
+import Icon from "../../../public/iconExport.svg";
+
+const { image, title } = Astro.props;
+---
+
+<article
+    class="flex items-center gap-4 p-2 max-w-[260px] rounded-[10px] shadowCardsSms my-5"
+>
+    <div class="bg-grayBg p-2 rounded-[10px]">
+        <img width="35px" src={`../../../public/${image}`} alt="" />
+    </div>
+    <p class="font-semibold text-[15px]">{title}</p>
+</article>
+
+<style>
+    .shadowCardsSms {
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+    }
+    .borderStyleSms {
+        color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #0488df;
+    }
+</style>
