@@ -1,5 +1,4 @@
 ---
-import Icon from "../../../public/iconExport.svg";
 
 const { image, title } = Astro.props;
 ---
@@ -8,7 +7,7 @@ const { image, title } = Astro.props;
     class="flex items-center gap-4 p-2 max-w-[260px] rounded-[10px] shadowCardsSms my-5 bg-white"
 >
     <div class="bg-grayBg p-2 rounded-[10px]">
-        <img width="32px" src={`../../../public/${image}`} alt="" />
+        <img width="32px" src={`/${image}`} alt="" />
     </div>
     <p class="font-semibold max-w-[12ch] text-[15px]">{title}</p>
 </article>
