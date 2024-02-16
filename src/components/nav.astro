@@ -1,46 +1,126 @@
 ---
 import Logo from "../../public/logo.astro";
-import Card from "./Card.astro";
 ---
 
-<header id="progressbar" class="fixed  w-full ">
-    <div  class="flex text-grayTexts justify-between items-center mx-auto w-[1200px] font-medium p-2">
-        
-        <span class="w-28">
-            <Logo />
-        </span>
-        
-        <nav>
-            <ul class="flex gap-1">
-                <li class="py-1 px-3"><a href="">Descubre Más</a> </li>
-                <li class="py-1 px-3"> <a href="">Crear Campaña</a></li>
-                <li class="py-1 px-3"><a href="">Beneficios</a></li>
-            </ul>
-        </nav>
+<script>
+  const btnMenu = document.querySelector("#btnMenu");
+  const MenuMobile = document.querySelector("#menuMobile");
+  const list = document.querySelectorAll("ul , li");
+  
+  list.forEach(x=>{
+    x.addEventListener('click', ()=>{
+      MenuMobile.classList.add('hidden');
+    })
+  }  ) 
 
-        <nav>
-            <ul class="flex ">
-                <li class="py-1 px-8 text-blue1"><a href="">Inicio</a></li>
-                <li class="py-1 px-8 bg-blue1 text-white rounded-full"><a href=""> Inicio</a></li>
-            </ul>
-        </nav>
+  btnMenu.addEventListener("click", () => {
+    MenuMobile.classList.toggle("hidden");
+  });
+</script>
+
+<header id="progressbar" class="fixed w-full z-30">
+  <div
+    class="flex text-grayTexts justify-between items-center mx-auto max-w-[1200px] font-medium p-2"
+  >
+    <span class="w-28">
+      <Logo />
+    </span>
+
+    <nav class="hidden md:block">
+      <ul class="flex gap-1">
+        <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition">
+          <a href="#beneficios">Descubre Más</a>
+        </li>
+        <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition">
+          <a href="#campanha">Crear Campaña</a>
+        </li>
+        <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition">
+          <a href="#beneficios2">Beneficios</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="hidden md:block">
+      <ul class="flex">
+        <li
+          class="py-1 px-8 text-blue1 hover:text-blue1 hover:scale-105 transition"
+        >
+          <a href="">Inicio</a>
+        </li>
+        <li
+          class="py-1 px-8 bg-blue1 text-white rounded-full hover:bg-grayBg hover:text-blue1 hover:scale-105 transition"
+        >
+          <a href=""> Inicio</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="btnMenu" class="md:hidden">
+      <img src="../../public/menuBarMobile.svg" alt="" />
     </div>
+  </div>
 </header>
-<div class="h-[60px]">   
-</div>
+<div class="h-[60px]"></div>
+
+<section
+  id="menuMobile"
+  class="hidden fixed inset-0 bg-white/80 backdrop-blur-sm z-20 flex flex-col justify-center gap-10"
+>
+  <nav class="">
+    <ul class="flex flex-col gap-4 justify-center text-center px-10">
+      <a href="#beneficios"
+        ><li
+          class="py-1 px-3 border border-blue1 rounded-full hover:bg-blue1 transition"
+        >
+          Descubre Más
+        </li></a
+      >
+      <a href="#campanha">
+        <li
+          class="py-1 px-3 border border-blue1 rounded-full hover:bg-blue1 transition"
+        >
+          Crear Campaña
+        </li></a
+      >
+      <a href="#beneficios2">
+        <li
+          class="py-1 px-3 border border-blue1 rounded-full hover:bg-blue1 transition"
+        >
+          Beneficios
+        </li></a
+      >
+    </ul>
+  </nav>
+
+  <nav class="flex justify-center">
+    <ul class="flex">
+      <li class="py-1 px-8 text-blue1"><a href="">Inicio</a></li>
+      <li class="py-1 px-8 bg-blue1 text-white rounded-full">
+        <a href=""> Inicio</a>
+      </li>
+    </ul>
+  </nav>
+</section>
 
 <style>
-    @keyframes scale-up {
-  from {
-    background-color: transparent;
+  @keyframes scale-up {
+    from {
+      background-color: transparent;
+      -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+      -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    to {
+      background-color: white;
+      -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.06);
+      -moz-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.06);
+      box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.06);
+    }
   }
-  to {
-    background-color: white;
-  }
-}
 
-#progressbar {
-  animation: linear forwards scale-up;
-  animation-timeline: scroll();
-}
+  #progressbar {
+    animation: linear forwards scale-up;
+    animation-timeline: scroll();
+    animation-range: 0 300px;
+  }
 </style>

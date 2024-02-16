@@ -11,7 +11,9 @@ export default {
 			'grayTexts': '#A1A0A8',
 			'white':'#fff'
 		  },
-		extend: {},
+		extend: {
+			
+		},
 	},
 	plugins: [],
 }

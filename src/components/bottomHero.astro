@@ -1,9 +1,36 @@
-<section class="max-w-[1200px] mx-auto my-5">
-    <p class="font-semibold w-[10ch]">Nuestros Productos</p>
-    <div>
-        <article>
-            <img src="../../public/iconEmailMarketing.svg" alt="" />
-            <p>Email Marketing</p>
-        </article>
+---
+const productos = [
+    {
+        "img" : "../../public/iconEmailMarketing.svg",
+        "title" : "Email Marketing"
+    },
+    {
+        "img" : "../../public/iconSms.svg",
+        "title" : "SMS"
+    },
+    {
+        "img" : "../../public/iconEmailsTra.svg",
+        "title" : "Emails Transaccionales"
+    },
+    {
+        "img" : "../../public/iconLandingP.svg",
+        "title" : "Landing Pages"
+    }
+]
+---
+
+<section class="max-w-[90%] md:max-w-[1200px] mx-auto my-10 flex flex-col md:flex-row w-full items-center" >
+    <p class="font-semibold w-[10ch] text-[16px]">Nuestros Productos</p>
+    <div class="flex justify-between w-full pl-10 flex-wrap">
+       {
+        productos.map(x=>{
+            return (
+                <article class="flex items-center gap-4 my-5 mx-1">
+                <img width="45" src={x.img} alt="">
+                <p class=" font-semibold text-[14px]  w-[10ch] ">{x.title}</p>    
+                </article>
+            )
+        })
+       }
     </div>
 </section>
