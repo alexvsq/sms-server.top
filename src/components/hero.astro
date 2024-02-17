@@ -3,16 +3,16 @@ import CarHero from "./assets/cardHero.astro";
 ---
 
 <section class="max-w-[90%] md:max-w-[1200px] mx-auto flex mt-12">
-    <article class=" md:w-1/2 pt-6">
+    <article class="md:w-1/2 pt-6">
         <h2 class="text-[33px] font-semibold leading-tight max-w-[25ch]">
-            Envía <br>
+            Envía <br />
             <strong class="text-blue1 text-[41px] font-bold"
                 >Campañas de Correo</strong
-            > 
-             masivo y <span class="text-blue1">vende_</span>
+            >
+            masivo y <span class="text-blue1">vende_</span>
         </h2>
 
-        <p class="text-grayTexts my-4 max-w-[38ch] ">
+        <p class="text-grayTexts my-4 max-w-[38ch]">
             Ponemos a tu disposición un <strong class="font-semibold"
                 >verdadero ejercito de emails</strong
             >, listo para conquistar las ventas que necesitas.
@@ -32,13 +32,29 @@ import CarHero from "./assets/cardHero.astro";
         </div>
     </article>
 
-    <article class="hidden md:block w-1/2 ">
-
-        <div class="  max-w-[550px] ml-auto">
-
-            <img src="/heroImage.svg" alt="">
+    <article class="hidden md:block w-1/2">
+        <div class="max-w-[550px] ml-auto ">
+            <img id="imagen" src="/heroImage.svg" alt="" />
         </div>
     </article>
 </section>
 
-<style></style>
+<style>
+    #imagen{
+        perspective: 1000px;
+    }
+</style>
+<script>
+   const imagen = document.querySelector('#imagen');
+const sensitivity = 0.02; // Ajusta la sensibilidad del movimiento
+
+document.addEventListener('mousemove', event => {
+  const { clientX: ex, clientY: ey } = event;
+
+  const rotateX = (ey - window.innerHeight / 2) * sensitivity;
+  const rotateY = (ex - window.innerWidth / 2) * sensitivity;
+
+  imagen.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+</script>
