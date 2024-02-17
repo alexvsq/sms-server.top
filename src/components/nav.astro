@@ -6,12 +6,12 @@ import Logo from "../../public/logo.astro";
   const btnMenu = document.querySelector("#btnMenu");
   const MenuMobile = document.querySelector("#menuMobile");
   const list = document.querySelectorAll("ul , li");
-  
-  list.forEach(x=>{
-    x.addEventListener('click', ()=>{
-      MenuMobile.classList.add('hidden');
-    })
-  }  ) 
+
+  list.forEach((x) => {
+    x.addEventListener("click", () => {
+      MenuMobile.classList.add("hidden");
+    });
+  });
 
   btnMenu.addEventListener("click", () => {
     MenuMobile.classList.toggle("hidden");
@@ -22,13 +22,12 @@ import Logo from "../../public/logo.astro";
   <div
     class="flex text-grayTexts justify-between items-center mx-auto max-w-[1200px] font-medium p-2"
   >
-    <span class="w-28">
+    <a class="w-28" href="./">
       <Logo />
-    </span>
-
+    </a>
     <nav class="hidden md:block">
       <ul class="flex gap-1">
-        <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition ">
+        <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition">
           <a href="#beneficios">Descubre Más</a>
         </li>
         <li class="py-1 px-3 hover:text-blue1 hover:scale-105 transition">
@@ -48,7 +47,7 @@ import Logo from "../../public/logo.astro";
           <a href="">Inicio</a>
         </li>
         <li
-          class="py-1 px-8 bg-blue1 text-white rounded-full hover:bg-grayBg hover:text-blue1 hover:scale-105 transition "
+          class="py-1 px-8 bg-blue1 text-white rounded-full hover:bg-grayBg hover:text-blue1 hover:scale-105 transition"
         >
           <a href=""> Zona Clientes</a>
         </li>
