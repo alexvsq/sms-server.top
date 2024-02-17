@@ -11,6 +11,7 @@
         ></span>
     </span>
     <h3
+        id="tituloBeneficios"
         class="mx-auto text-center text-[22px] md:text-[26px] px-4 max-w-[34ch] text-grayTexts py-14 md:py-20"
     >
         Desarrolla tu estrategia de marketing por SMS y <strong
@@ -118,3 +119,29 @@
         box-shadow: 10px -10px 30px 0px rgba(0, 0, 0, 0.1);
     }
 </style>
+
+<script>
+    // Selecciona el elemento que quieres animar
+    const animatedElement = document.querySelector("#tituloBeneficios");
+
+    // Crea una instancia de Intersection Observer
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                // Si el elemento es visible, agrega la clase de animación
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(
+                        "animate-fade-down",
+                        "animate-once",
+                    );
+                    // Puedes detener la observación después de la primera vez si es necesario
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.5 },
+    ); // threshold ajusta la cantidad de visibilidad necesaria
+
+    // Observa el elemento
+    observer.observe(animatedElement);
+</script>

@@ -1,36 +1,73 @@
 ---
 const productos = [
     {
-        "img" : "/iconEmailMarketing.svg",
-        "title" : "Email Marketing"
+        img: "/iconEmailMarketing.svg",
+        title: "Email Marketing",
     },
     {
-        "img" : "/iconSms.svg",
-        "title" : "SMS"
+        img: "/iconSms.svg",
+        title: "SMS",
     },
     {
-        "img" : "/iconEmailsTra.svg",
-        "title" : "Emails Transaccionales"
+        img: "/iconEmailsTra.svg",
+        title: "Emails Transaccionales",
     },
     {
-        "img" : "/iconLandingP.svg",
-        "title" : "Landing Pages"
-    }
-]
+        img: "/iconLandingP.svg",
+        title: "Landing Pages",
+    },
+];
 ---
 
-<section class="max-w-[90%] md:max-w-[1200px] mx-auto my-10 flex flex-col md:flex-row w-full items-center" >
+<section
+    class="max-w-[90%] md:max-w-[1200px] mx-auto my-10 flex flex-col md:flex-row w-full items-center"
+>
     <p class="font-semibold w-[10ch] text-[16px]">Nuestros Productos</p>
     <div class="flex justify-between w-full md:pl-10 flex-wrap">
-       {
-        productos.map(x=>{
-            return (
-                <article class="flex items-center gap-4 my-5 mx-1">
-                <img width="45" src={x.img} alt="">
-                <p class=" font-semibold text-[14px]  w-[10ch] ">{x.title}</p>    
-                </article>
-            )
-        })
-       }
+        {
+            productos.map((x) => {
+                return (
+                    <article  class="flex items-center gap-4 my-5 mx-1 animationRight">
+                        <img width="45" src={x.img} alt="" />
+                        <p class=" font-semibold text-[14px]  w-[10ch] ">
+                            {x.title}
+                        </p>
+                    </article>
+                );
+            })
+        }
     </div>
 </section>
+
+<script>
+    // Selecciona todos los elementos que quieres animar
+    const animatedElements = document.querySelectorAll(".animationRight");
+  
+    // Crea una instancia de Intersection Observer para cada elemento
+    const observers = [];
+  
+    animatedElements.forEach((animatedElement) => {
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            // Si el elemento es visible, agrega la clase de animación
+            if (entry.isIntersecting) {
+              entry.target.classList.add(
+                "animate-fade-right",
+                "animate-once"
+              );
+              // Puedes detener la observación después de la primera vez si es necesario
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+  
+      // Observa el elemento
+      observer.observe(animatedElement);
+  
+      // Guarda la instancia de Intersection Observer en el array
+      observers.push(observer);
+    });
+  </script>

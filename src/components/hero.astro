@@ -3,13 +3,13 @@ import CarHero from "./assets/cardHero.astro";
 ---
 
 <section class="max-w-[90%] md:max-w-[1200px] mx-auto flex mt-12">
-    <article class="md:w-1/2 pt-6">
+    <article class="md:w-1/2 pt-6 animate-fade-down animate-once">
         <h2 class="text-[33px] font-semibold leading-tight max-w-[25ch]">
             Envía <br />
             <strong class="text-blue1 text-[41px] font-bold"
                 >Campañas de Correo</strong
             >
-            masivo y <span class="text-blue1">vende_</span>
+            masivo y <span id="letras" class="text-blue1">vende_</span>
         </h2>
 
         <p class="text-grayTexts my-4 max-w-[38ch]">
@@ -33,28 +33,58 @@ import CarHero from "./assets/cardHero.astro";
     </article>
 
     <article class="hidden md:block w-1/2">
-        <div class="max-w-[550px] ml-auto ">
+        <div class="max-w-[550px] ml-auto animate-fade-down animate-once">
             <img id="imagen" src="/heroImage.svg" alt="" />
         </div>
     </article>
 </section>
 
 <style>
-    #imagen{
+    #imagen {
         perspective: 1000px;
     }
 </style>
 <script>
-   const imagen = document.querySelector('#imagen');
-const sensitivity = 0.02; // Ajusta la sensibilidad del movimiento
+    const imagen = document.querySelector("#imagen");
 
-document.addEventListener('mousemove', event => {
-  const { clientX: ex, clientY: ey } = event;
+    const sensitivity = 0.03; // Ajusta la sensibilidad del movimiento
 
-  const rotateX = (ey - window.innerHeight / 2) * sensitivity;
-  const rotateY = (ex - window.innerWidth / 2) * sensitivity;
+    document.addEventListener("mousemove", (event) => {
+        const { clientX: ex, clientY: ey } = event;
 
-  imagen.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
+        const rotateX = (ey - window.innerHeight / 2) * sensitivity;
+        const rotateY = (ex - window.innerWidth / 2) * sensitivity;
 
+        imagen.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    const $letras = document.querySelector("#letras");
+
+    const palabras = ["Vende", "Conecta", "Descubre", "Expándete"];
+
+    let medidaArray = palabras.length;
+    let current = 0;
+
+    let contenido = "";
+    let index = 0;
+
+    const intervalId = setInterval(() => {
+        if (current < palabras.length) {
+            let medida = palabras[current].length;
+            if (index < medida) {
+                contenido += palabras[current][index];
+                index++;
+                console.log(contenido);
+                $letras.innerHTML = contenido + "_";
+            } else {
+                // Se ha completado la palabra actual, reinicia el índice y pasa a la siguiente palabra
+                index = 0;
+                current++;
+                contenido = "";
+            }
+        } else {
+            // Todas las palabras han sido escritas, reinicia el proceso desde la primera palabra
+            current = 0;
+            contenido = "";
+        }
+    }, 250);
 </script>

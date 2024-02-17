@@ -24,11 +24,11 @@ const items = [
     {
         items.map((x) => {
             return (
-                <article class="flex flex-col md:flex-row gap-4">
+                <article class="flex flex-col md:flex-row gap-4 " >
                     <img class=" h-11" src={x.img} alt="" />
                     <div class="">
-                        <h3 class="font-semibold text-lg text-center md:text-right">{x.title}</h3>
-                        <p class=" w-[28ch] text-center md:text-right text-[14px]">{x.text}</p>
+                        <h3 class="font-semibold text-lg text-center md:text-left">{x.title}</h3>
+                        <p class=" w-[28ch] text-center md:text-left text-[14px]">{x.text}</p>
                         </div>
                 </article>
             );
